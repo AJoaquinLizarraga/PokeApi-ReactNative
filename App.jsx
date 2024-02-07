@@ -4,13 +4,15 @@ import * as React from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import Navigation from "./src/navigation/NavigationScreens"
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"
-
+import { AuthProvider } from "./src/context/AuthContext"
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <NavigationContainer>
-        <Navigation />
-      </NavigationContainer>
+      <AuthProvider>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </AuthProvider>
     </SafeAreaView>
   )
 }

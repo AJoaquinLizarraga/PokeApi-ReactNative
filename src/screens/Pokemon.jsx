@@ -1,13 +1,15 @@
 /** @format */
 
 import React, { useState, useEffect } from "react"
-import { ScrollView, Text } from "react-native"
+import { ScrollView, Text, TouchableOpacity } from "react-native"
 
 import { getDetailApi } from "../api/pokemonApi"
 import Header from "../components/Pokemon/Header"
 import Type from "../components/Pokemon/Type"
 import Stats from "../components/Pokemon/Stats"
 import Icon from "react-native-vector-icons/FontAwesome5"
+import Favorite from "../components/Pokemon/Favorite"
+import useAuth from "../hooks/useAuth"
 
 const Pokemon = (props) => {
   const [pokemonDetail, setPokemonDetail] = useState(null)
@@ -17,20 +19,24 @@ const Pokemon = (props) => {
     route: { params }, //esto es un doble destructuring
   } = props
 
+  const { auth } = useAuth()
+
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <Text>❤️</Text>,
+      headerRight: () => auth && <Favorite id={pokemonDetail?.id} />,
       headerLeft: () => (
-        <Icon
-          name="arrow-left"
-          color="white"
-          size={20}
-          style={{ marginLeft: 20 }}
-          onPress={() => navigation.goBack()}
-        />
+        <TouchableOpacity>
+          <Icon
+            name="arrow-left"
+            color="white"
+            size={20}
+            style={{ marginLeft: 20 }}
+            onPress={() => navigation.goBack()}
+          />
+        </TouchableOpacity>
       ),
     })
-  }, [navigation, params])
+  }, [navigation, params, pokemonDetail])
 
   useEffect(() => {
     ;(async () => {

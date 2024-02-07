@@ -3,7 +3,7 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack"
 import FavoritesScreen from "../screens/Favorites"
-import HomeScreen from "../screens/Home"
+import Pokemon from "../screens/Pokemon"
 
 const Stack = createStackNavigator()
 
@@ -15,11 +15,11 @@ const FavoritesNavigation = (params) => {
         component={FavoritesScreen}
         options={{ title: "Favorites" }}
       />
-      {/* <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ title: "Home" }}
-      /> */}
+      <Stack.Screen
+        name="Pokemon"
+        component={Pokemon}
+        options={{ title: "", headerTransparent: true }}
+      />
     </Stack.Navigator>
   )
 }

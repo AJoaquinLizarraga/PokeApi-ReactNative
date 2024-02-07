@@ -17,9 +17,6 @@ const PokemonCard = (props) => {
   const navigation = useNavigation()
 
   const goToPokemon = () => {
-    console.log("====================================")
-    console.log(`vamos al pokemon ${pokemon.id}`)
-    console.log("====================================")
     navigation.navigate("Pokemon", { id: pokemon.id })
   }
   const pokemonBGColor = getColorByPokemonType(pokemon.type)

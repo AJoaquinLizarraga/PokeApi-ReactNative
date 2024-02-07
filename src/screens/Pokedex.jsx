@@ -19,13 +19,12 @@ const PokedexScreen = (params) => {
   const loadPokemons = async () => {
     try {
       const response = await getPokemonApi(nextUrl)
-      console.log("====================================")
-      console.log(response.next)
-      console.log("====================================")
       setNextUrl(response.next)
+
       const pokemonsArray = []
       for await (const pokemon of response.results) {
         const pokemonDetail = await getPokemonDetailApi(pokemon.url)
+
         pokemonsArray.push({
           id: pokemonDetail.id,
           name: pokemonDetail.name,

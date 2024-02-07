@@ -9,7 +9,10 @@ const Stack = createStackNavigator()
 
 const FavoritesNavigation = (params) => {
   return (
-    <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
+    <Stack.Navigator
+      screenOptions={{ headerTitleAlign: "center" }}
+      initialRouteName="Pokedex"
+    >
       <Stack.Screen name="Pokedex" component={PokedexScreen} options={{}} />
       <Stack.Screen
         name="Pokemon"
