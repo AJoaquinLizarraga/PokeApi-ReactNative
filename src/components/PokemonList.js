@@ -29,7 +29,6 @@ const PokemonList = (props) => {
         nextUrl && (
           <ActivityIndicator
             size="large"
-            w
             style={styles.spinner}
             color={"#FF6347"}
           />

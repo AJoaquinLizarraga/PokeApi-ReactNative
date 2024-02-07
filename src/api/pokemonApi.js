@@ -2,11 +2,8 @@
 
 import { API_HOST } from "../utils/consts"
 
-export const getPokemonApi = async (nextUrl) => {
+export const getPokemonsApi = async (nextUrl) => {
   try {
-    // console.log("====================================")
-    // console.log(nextUrl)
-    // console.log("====================================")
     const url = `${API_HOST}pokemon?limit=20&offset=0`
 
     const response = await fetch(nextUrl || url)

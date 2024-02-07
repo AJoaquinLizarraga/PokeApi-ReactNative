@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { SafeAreaView, StyleSheet } from "react-native"
-import { getPokemonApi, getPokemonDetailApi } from "../api/pokemonApi"
+import { getPokemonsApi, getPokemonDetailApi } from "../api/pokemonApi"
 import PokemonList from "../components/PokemonList"
 
 const PokedexScreen = (params) => {
@@ -18,7 +18,7 @@ const PokedexScreen = (params) => {
 
   const loadPokemons = async () => {
     try {
-      const response = await getPokemonApi(nextUrl)
+      const response = await getPokemonsApi(nextUrl)
       setNextUrl(response.next)
 
       const pokemonsArray = []

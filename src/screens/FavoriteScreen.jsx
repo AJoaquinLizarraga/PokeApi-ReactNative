@@ -10,8 +10,9 @@ import PokemonList from "../components/PokemonList"
 import NoLogged from "../components/NoLogged"
 
 const FavoritesScreen = (params) => {
-  const [allFavorites, setAllFavorites] = useState([])
+  const [pokemons, setPokemons] = useState([])
 
+  const { auth } = useAuth()
   useFocusEffect(
     useCallback(() => {
       if (auth) {
@@ -20,6 +21,7 @@ const FavoritesScreen = (params) => {
           const pokemonsArray = []
           for await (const id of response) {
             const pokemonDetail = await getDetailApi(id)
+
             pokemonsArray.push({
               id: pokemonDetail.id,
               name: pokemonDetail.name,
@@ -29,14 +31,13 @@ const FavoritesScreen = (params) => {
                 pokemonDetail.sprites.other["official-artwork"].front_default,
             })
           }
-          setAllFavorites(pokemonsArray)
+          setPokemons(pokemonsArray)
         })()
       }
     }, [auth])
   )
-  const { auth } = useAuth()
 
-  return auth ? <PokemonList pokemons={allFavorites} /> : <NoLogged />
+  return !auth ? <NoLogged /> : <PokemonList pokemons={pokemons} />
 }
 
 export default FavoritesScreen

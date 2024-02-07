@@ -8,7 +8,7 @@ import getColorByPokemonType from "../../utils/getColorByPokemonType"
 const Type = (props) => {
   const { types } = props
 
-  console.log(types)
+  // console.log(types)
 
   return (
     <View style={styles.content}>

@@ -12,7 +12,10 @@ const Tab = createBottomTabNavigator()
 
 const Navigation = (params) => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="PokedexScreen"
+    >
       {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
       <Tab.Screen
         name="Favorites"
